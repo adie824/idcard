@@ -153,6 +153,49 @@ const counterAnimation = new CounterAnimation({
     autoStart: false         // Tidak autostart, gunakan scroll trigger
 });
 
+
+// Tambahkan ke script.js
+
+// Dark Mode Toggle
+function initDarkMode() {
+    const body = document.body;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (prefersDark) {
+        body.classList.add('dark-mode');
+    }
+    
+    // Bisa ditambahkan tombol toggle jika diinginkan
+}
+
+// Smooth scroll untuk link internal
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Portfolio item hover effect
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+portfolioItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+    });
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    initDarkMode();
+    // Your existing CounterAnimation initialization
+});
+
 // Tambahkan kontrol untuk testing
 // Uncomment baris berikut jika ingin menambahkan tombol kontrol
 /*
